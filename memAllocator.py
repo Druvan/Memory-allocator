@@ -12,15 +12,15 @@ class memAllocator:
 
 
     def run(self):
-
+        print("inputs: ",self.cpu_percent, self.mem_percent,self.time_in_s)
         with open('/proc/meminfo') as f:
             meminfo = f.read()
         matched = re.search(r'^MemTotal:\s+(\d+)', meminfo)
         if matched: 
             total_ram = int(matched.groups()[0])*1000
-
+        print("total ram: ",total_ram)
         if (total_ram > 0 and self.mem_percent >= 0 and self.time_in_s > 0 and self.cpu_percent >= 0):
-            
+            print("bytes_to_allocate: ",bytes_to_allocate)
             bytes_to_allocate = total_ram*self.mem_percent*0.01
             test = bytearray(round(bytes_to_allocate)) 
             if(self.cpu_percent > 0):
