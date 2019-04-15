@@ -20,8 +20,8 @@ class memAllocator:
             total_ram = int(matched.groups()[0])*1000
         print("total ram: ",total_ram)
         if (total_ram > 0 and self.mem_percent >= 0 and self.time_in_s > 0 and self.cpu_percent >= 0):
-            print("bytes_to_allocate: ",bytes_to_allocate)
             bytes_to_allocate = total_ram*self.mem_percent*0.01
+            print("bytes_to_allocate: ",bytes_to_allocate)
             test = bytearray(round(bytes_to_allocate)) 
             if(self.cpu_percent > 0):
                 cpu_ret = subprocess.Popen(["stress-ng", "--cpu" ,"1", "--cpu-load", str(self.cpu_percent) ,"-t" ,str(self.time_in_s)])
