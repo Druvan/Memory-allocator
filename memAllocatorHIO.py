@@ -1,6 +1,6 @@
 from harmonicPE.daemon import listen_for_tasks
 from memAllocator import memAllocator
-import sys
+from os import environ
 
 def process_data(message_bytes):
     print("Running memAllocator")
