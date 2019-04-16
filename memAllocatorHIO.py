@@ -2,9 +2,12 @@ from harmonicPE.daemon import listen_for_tasks
 from memAllocator import memAllocator
 import sys
 
-def process_data():
-    print(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
-    ma = memAllocator(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
+def process_data(message_bytes):
+    print("Running memAllocator")
+    cpulevel = int(environ.get("CPU_LEVEL", 5))
+    memlevel = int(environ.get("MEM_LEVEL", 20))
+    time = int(environ.get("TIME", 15))
+    ma = memAllocator(cpulevel,memlevel,time)
     ma.run()
 
 
